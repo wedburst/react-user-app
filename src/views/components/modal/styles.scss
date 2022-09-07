@@ -1,0 +1,186 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+  transition: background-color 0.3s;
+
+  &__box {
+    position: fixed;
+    max-width: 500px;
+    width: grid(33, 37);
+    top: 55%;
+    left: 50%;
+    z-index: 1010;
+    border-radius: 24px;
+    background-color: #fff;
+    transform: translateY(-50%) translateX(-50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s, top 0.1s;
+    box-sizing: border-box;
+  }
+
+  &__close {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #d4d5e8;
+    border-radius: 100%;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    background-color: #fff;
+    transition: border-color 0.3s;
+
+    svg {
+      width: 20px;
+    }
+
+    &:hover {
+      border-color: #ff1c44;
+
+      svg path {
+        transition: stroke 0.3s;
+        stroke: #ff1c44;
+      }
+    }
+  }
+
+  &.is-open {
+    pointer-events: auto;
+    background-color: rgba(20, 25, 56, 0.8);
+
+    .modal__box {
+      transition: opacity 0.3s, top 0.3s;
+      transition-delay: 0.25s;
+      pointer-events: auto;
+      opacity: 1;
+      top: 50%;
+    }
+  }
+
+  &.is-fullscreen {
+    .modal__box {
+      max-width: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 0;
+      transform: none;
+    }
+
+    &.is-open {
+      background-color: #fff;
+    }
+
+    .modal__body {
+      max-height: 100vh;
+      overflow-y: auto;
+      box-sizing: border-box;
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #edeffc;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #d7dbf5;
+        border-radius: 12px;
+      }
+    }
+
+    .modal__inner {
+      padding: 60px grid(2, 37) 32px 0;
+      margin-left: grid(2, 37);
+      
+    }
+  }
+}
+
+.modal-msg {
+  .modal__box {
+    padding: 50px grid(2, 33);
+    
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -0.2px;
+    color: #141938;
+    margin: 0;
+    padding-bottom: 16px;
+   
+  }
+
+  &__desc {
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #141938;
+    padding-bottom: 32px;
+  }
+
+  &__btn {
+    width: 145px;
+    margin: 0 auto;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    .btn {
+      margin: 0 12px;
+    }
+  }
+}
+
+.modal-result {
+  &__title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    border-bottom: 1px solid #d7dbf5;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    padding-bottom: 12px;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 40px 0 0;
+  }
+
+  .btn-choose {
+    width: 195px;
+  }
+
+  .radio {
+    margin-bottom: 0;
+  }
+}
